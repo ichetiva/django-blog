@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}All posts{% endblock %}
+
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <p>
+        {{ post.content }}
+    </p>
+    <small>Created: {{ post.created_at }}</small><br>
+    <small>Last update: {{ post.last_updated_at }}</small><br>
+    <a href="{% url "delete-post" post.id %}" class="btn btn-danger">Delete</a>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}All posts{% endblock %}
+
+{% block content %}
+    <div class="list-group mt-5">
+        {% for post in posts %}
+            <a href="{{ post.get_absolute_url }}" class="list-group-item list-group-item-action" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ post.title }}</h5>
+                    <small>{{ post.created_at }}</small>
+                </div>
+                <p class="mb-1">{{ post.content|truncatechars:50 }}</p>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
