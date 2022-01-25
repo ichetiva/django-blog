@@ -9,5 +9,10 @@
     </p>
     <small>Created: {{ post.created_at }}</small><br>
     <small>Last update: {{ post.last_updated_at }}</small><br>
-    <a href="{% url "delete-post" post.id %}" class="btn btn-danger">Delete</a>
+    <small>Created by: @{{ post.created_by.username }}</small><br>
+    {% if user.is_authenticated %}
+        {% if user.id == post.created_by.id %}
+            <a href="{% url "delete-post" post.id %}" class="btn btn-danger">Delete</a>
+        {% endif %}
+    {% endif %}
 {% endblock %}
